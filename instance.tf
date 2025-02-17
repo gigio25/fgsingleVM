@@ -10,10 +10,10 @@ resource "ibm_is_volume" "logDisk" {
   resource_group = var.resource_group_fortigate
 }
 
-# resource "ibm_is_floating_ip" "publicip" {
-# name   = "${var.cluster_name}-publicip-${random_string.random_suffix.result}"
-#  target = ibm_is_instance.fgt1.primary_network_interface[0].id
-#}
+ resource "ibm_is_floating_ip" "publicip" {
+ name   = "${var.cluster_name}-publicip-${random_string.random_suffix.result}"
+ target = ibm_is_instance.fgt1.primary_network_interface[0].id
+}
 
 resource "ibm_is_instance" "fgt1" {
   name    = "${var.cluster_name}-fortigate-${random_string.random_suffix.result}"
